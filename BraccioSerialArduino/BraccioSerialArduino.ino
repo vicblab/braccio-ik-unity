@@ -119,7 +119,7 @@ void readSerialStr() {
     m4 = atoi(m4_char);
     m5 = atoi(m5_char);
     m6 = atoi(m6_char);
-
+    //Serial.println(char(inData));
     isRead = false;
     index = 0;
   }

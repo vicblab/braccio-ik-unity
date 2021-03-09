@@ -8,6 +8,7 @@ public class ArduinoSerial : MonoBehaviour {
 	public string portName;
 	SerialPort arduino;
 	bool startCommands = false;
+	//public string lastData="";
 
 	void Start () {
 		arduino = new SerialPort (portName, 9600);
@@ -16,6 +17,30 @@ public class ArduinoSerial : MonoBehaviour {
 	}
 
 	void Update () {
+
+		/*//if()
+		//{
+			if (arduino.IsOpen) {
+			string str;
+
+			string thetaBaseStr = (Mathf.RoundToInt(solveIK.thetaBase)).ToString("000");
+			string thetaShoulderStr = (Mathf.RoundToInt(solveIK.thetaShoulder)).ToString("000");
+			string thetaElbowStr = (Mathf.RoundToInt(solveIK.thetaElbow)).ToString("000");
+			string thetaWristVerticalStr = (Mathf.RoundToInt(solveIK.thetaWristVertical)).ToString("000");
+			string thetaWristRotationStr = (Mathf.RoundToInt(solveIK.thetaWristRotation)).ToString("000");
+			string thetaGripperStr = (Mathf.RoundToInt(solveIK.thetaGripper)).ToString("000");
+
+			str = thetaBaseStr + thetaShoulderStr + thetaElbowStr + thetaWristVerticalStr + thetaWristRotationStr + thetaGripperStr + "\n";
+
+			if(lastData != str){
+			arduino.Write (str);
+			lastData=str;
+			}
+		
+			Debug.Log ("Send Serial: " + str);
+		}
+		//}*/
+
 		if (startCommands == false) 
 			StartCoroutine (SendCommands ());
 	}
@@ -37,6 +62,7 @@ public class ArduinoSerial : MonoBehaviour {
 			str = thetaBaseStr + thetaShoulderStr + thetaElbowStr + thetaWristVerticalStr + thetaWristRotationStr + thetaGripperStr + "\n";
 
 			arduino.Write (str);
+			
 		
 			Debug.Log ("Send Serial: " + str);
 		}
